@@ -1,0 +1,232 @@
+{
+  "categories": [
+    {
+      "id": "frontend",
+      "name": "Frontend",
+      "description": "Moderne Frontend-Technologien für responsive und interaktive Web-Anwendungen"
+    },
+    {
+      "id": "backend",
+      "name": "Backend",
+      "description": "Server-seitige Entwicklung und API-Design"
+    },
+    {
+      "id": "database",
+      "name": "Datenbanken",
+      "description": "Datenbank-Management und Datenmodellierung"
+    },
+    {
+      "id": "tools",
+      "name": "Tools & DevOps",
+      "description": "Entwicklungstools, Version Control und Deployment"
+    },
+    {
+      "id": "methodology",
+      "name": "Methodik",
+      "description": "Agile Methoden und Projektmanagement"
+    }
+  ],
+  "skills": [
+    {
+      "id": "html",
+      "name": "HTML5",
+      "category": "frontend",
+      "level": 4,
+      "maxLevel": 5,
+      "icon": "assets/icons/html5.svg",
+      "description": "Semantisches HTML5 für moderne Web-Strukturen",
+      "years": 2
+    },
+    {
+      "id": "css",
+      "name": "CSS3",
+      "category": "frontend",
+      "level": 4,
+      "maxLevel": 5,
+      "icon": "assets/icons/html5.svg",
+      "description": "Moderne CSS-Techniken, Flexbox, Grid, Animationen, Custom Properties",
+      "years": 2
+    },
+    {
+      "id": "javascript",
+      "name": "JavaScript",
+      "category": "frontend",
+      "level": 4,
+      "maxLevel": 5,
+      "icon": "assets/icons/javascript.svg",
+      "description": "ES6+, DOM-Manipulation, Async/Await, Promises",
+      "years": 2
+    },
+    {
+      "id": "typescript",
+      "name": "TypeScript",
+      "category": "frontend",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/typescript.svg",
+      "description": "Type-safe JavaScript für skalierbare Anwendungen",
+      "years": 1
+    },
+    {
+      "id": "react",
+      "name": "React",
+      "category": "frontend",
+      "level": 4,
+      "maxLevel": 5,
+      "icon": "assets/icons/react.svg",
+      "description": "Component-basierte UI-Entwicklung mit Hooks",
+      "years": 2
+    },
+    {
+      "id": "nextjs",
+      "name": "Next.js",
+      "category": "frontend",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/nextdotjs.svg",
+      "description": "React-Framework mit SSR und optimierter Performance",
+      "years": 1
+    },
+    {
+      "id": "tailwind",
+      "name": "Tailwind CSS",
+      "category": "frontend",
+      "level": 4,
+      "maxLevel": 5,
+      "icon": "assets/icons/tailwindcss.svg",
+      "description": "Utility-first CSS Framework für schnelle Entwicklung",
+      "years": 1
+    },
+    {
+      "id": "nodejs",
+      "name": "Node.js",
+      "category": "backend",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/nodedotjs.svg",
+      "description": "Server-seitige JavaScript-Entwicklung",
+      "years": 1
+    },
+    {
+      "id": "express",
+      "name": "Express.js",
+      "category": "backend",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/express.svg",
+      "description": "Web-Framework für Node.js",
+      "years": 1
+    },
+    {
+      "id": "restapi",
+      "name": "REST APIs",
+      "category": "backend",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/restapi.svg",
+      "description": "Design und Entwicklung von RESTful APIs",
+      "years": 1
+    },
+    {
+      "id": "python",
+      "name": "Python",
+      "category": "backend",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/python.svg",
+      "description": "Backend-Entwicklung und Scripting",
+      "years": 1
+    },
+    {
+      "id": "mongodb",
+      "name": "MongoDB",
+      "category": "database",
+      "level": 2,
+      "maxLevel": 5,
+      "icon": "assets/icons/mongodb.svg",
+      "description": "NoSQL-Datenbank für flexible Datenstrukturen",
+      "years": 1
+    },
+    {
+      "id": "postgresql",
+      "name": "PostgreSQL",
+      "category": "database",
+      "level": 2,
+      "maxLevel": 5,
+      "icon": "assets/icons/postgresql.svg",
+      "description": "Relationale Datenbank mit erweiterten Features",
+      "years": 1
+    },
+    {
+      "id": "git",
+      "name": "Git / GitHub",
+      "category": "tools",
+      "level": 4,
+      "maxLevel": 5,
+      "icon": "assets/icons/github.svg",
+      "description": "Version Control und Collaboration",
+      "years": 2
+    },
+    {
+      "id": "docker",
+      "name": "Docker",
+      "category": "tools",
+      "level": 2,
+      "maxLevel": 5,
+      "icon": "assets/icons/docker.svg",
+      "description": "Containerisierung und Deployment",
+      "years": 1
+    },
+    {
+      "id": "aws",
+      "name": "AWS",
+      "category": "tools",
+      "level": 2,
+      "maxLevel": 5,
+      "icon": "assets/icons/aws-color.svg",
+      "description": "Cloud-Services und Infrastructure",
+      "years": 1
+    },
+    {
+      "id": "netlify",
+      "name": "Netlify",
+      "category": "tools",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/netlify.svg",
+      "description": "Hosting und CI/CD für moderne Web-Apps",
+      "years": 1
+    },
+    {
+      "id": "vercel",
+      "name": "Vercel",
+      "category": "tools",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/vercel.svg",
+      "description": "Deployment-Plattform für Frontend-Apps",
+      "years": 1
+    },
+    {
+      "id": "agile",
+      "name": "Agile / Scrum",
+      "category": "methodology",
+      "level": 3,
+      "maxLevel": 5,
+      "icon": "assets/icons/agile.svg",
+      "description": "Agile Entwicklung und Scrum-Methodik",
+      "years": 1
+    },
+    {
+      "id": "ml",
+      "name": "Machine Learning",
+      "category": "backend",
+      "level": 2,
+      "maxLevel": 5,
+      "icon": "assets/icons/ml.svg",
+      "description": "Grundlagen des Machine Learning",
+      "years": 1
+    }
+  ]
+}
+

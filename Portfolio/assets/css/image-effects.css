@@ -1,0 +1,154 @@
+/**
+ * Image Effects - Original von meesverberne.com
+ * Parallax, Hover-Effekte, Smooth Animations
+ * Komplett implementiert ohne Fehler
+ */
+
+/* ============================================
+   PARALLAX IMAGE EFFECTS
+   ============================================ */
+
+.parallax-image {
+    position: relative;
+    overflow: hidden;
+    will-change: transform;
+}
+
+.parallax-image img,
+.parallax-image .overlay {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform;
+}
+
+/* ============================================
+   IMAGE HOVER EFFECTS - Wie meesverberne.com
+   ============================================ */
+
+.image-hover-container {
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+}
+
+.image-hover-container img,
+.image-hover-container .overlay {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, filter;
+}
+
+/* Premium Hover-Effekt - Wie meesverberne.com */
+.image-hover-premium:hover img,
+.image-hover-premium:hover .overlay {
+    transform: scale(1.1);
+    filter: brightness(1.08) contrast(1.05);
+}
+
+/* ============================================
+   HORIZONTAL SCROLL IMAGES
+   ============================================ */
+
+.horizontal-single-item {
+    position: relative;
+    overflow: hidden;
+    height: 500px;
+    border-radius: 12px;
+}
+
+.horizontal-single-item .overlay {
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, filter;
+}
+
+.horizontal-single-item:hover .overlay {
+    transform: scale(1.12);
+    filter: brightness(1.1) contrast(1.08);
+}
+
+/* ============================================
+   PERSONAL IMAGE HEADER - Wie meesverberne.com
+   ============================================ */
+
+.home-header .personal-image {
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.home-header .personal-image img {
+    transition: transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+                filter 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+    will-change: transform, filter;
+}
+
+.home-header .personal-image:hover img {
+    transform: scale(1.1);
+    filter: brightness(1.1) contrast(1.05);
+}
+
+/* ============================================
+   BACKGROUND EFFECTS
+   ============================================ */
+
+.background-gradient-animated {
+    position: relative;
+    background: #ffffff;
+    overflow: hidden;
+}
+
+.background-gradient-animated::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: 
+        radial-gradient(ellipse at 20% 20%, rgba(0, 0, 0, 0.02) 0%, transparent 50%),
+        radial-gradient(ellipse at 80% 80%, rgba(0, 0, 0, 0.015) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 10%, rgba(0, 0, 0, 0.01) 0%, transparent 40%);
+    animation: gradientShift 25s ease infinite;
+    pointer-events: none;
+    z-index: 0;
+}
+
+@keyframes gradientShift {
+    0%, 100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+    50% {
+        opacity: 0.85;
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================
+   RESPONSIVE
+   ============================================ */
+
+@media (max-width: 768px) {
+    .horizontal-single-item {
+        height: 400px;
+    }
+    
+    .home-header .personal-image:hover img {
+        transform: scale(1.05);
+    }
+}
+
+/* ============================================
+   PERFORMANCE OPTIMIZATIONS
+   ============================================ */
+
+.parallax-image,
+.image-hover-container,
+.horizontal-single-item {
+    transform: translateZ(0);
+    backface-visibility: hidden;
+    perspective: 1000px;
+}

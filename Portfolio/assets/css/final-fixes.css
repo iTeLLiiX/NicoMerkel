@@ -1,0 +1,203 @@
+/**
+ * FINAL FIXES - Sanfte Verbesserungen für Sichtbarkeit
+ * Keine aggressiven !important Regeln
+ */
+
+/* ============================================
+   TEXT SICHTBARKEIT - Sanfte Fixes
+   ============================================ */
+
+/* Theme-Dark Bereiche bekommen sicher einen dunklen Hintergrund,
+   damit der aktuell weiße Text nicht auf Weiß verschwindet. */
+.section.theme-dark {
+    background-color: #0f1115;
+}
+
+/* Wichtige Dark-Sektionen explizit absichern */
+.projects-section.theme-dark,
+.stats-section.theme-dark,
+.code-showcase-section.theme-dark,
+.praktikum-section.theme-dark,
+.footer-wrap.theme-dark,
+.footer.theme-dark,
+.footer-contact {
+    background-color: #0f1115;
+}
+
+/* Skills Section - Weißer Hintergrund */
+.skills-section:not(.theme-dark) h2,
+.skills-section:not(.theme-dark) h5,
+.skills-section:not(.theme-dark) p {
+    color: #1C1D20;
+}
+
+.skills-section:not(.theme-dark) .skills-title {
+    color: #1C1D20;
+}
+
+.skills-section:not(.theme-dark) .skills-subtitle {
+    color: #4A5568;
+}
+
+/* Theme Dark - Heller Text */
+.section.theme-dark h1,
+.section.theme-dark h2,
+.section.theme-dark h3,
+.section.theme-dark h4,
+.section.theme-dark h5,
+.section.theme-dark p {
+    color: #FFFFFF !important;
+}
+
+.section.theme-dark .grid-sub-title h5,
+.section.theme-dark .grid-sub-title p {
+    color: #FFFFFF !important;
+}
+
+.section.theme-dark .flex-col h5,
+.section.theme-dark .flex-col p {
+    color: #FFFFFF !important;
+}
+
+/* Links - Sichtbar */
+a {
+    color: #4A90E2;
+}
+
+.theme-dark a {
+    color: #4A90E2;
+}
+
+a:hover {
+    color: #5BA0F2;
+    text-decoration: underline;
+}
+
+/* ============================================
+   PROJEKTE SECTION - Sichtbarkeit
+   ============================================ */
+
+.projects-section.theme-dark h5,
+.projects-section.theme-dark p {
+    color: #FFFFFF !important;
+}
+
+.projects-section .showcase-card h6 {
+    color: #FFFFFF !important;
+}
+
+.projects-section .showcase-card p {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.projects-section .showcase-card a {
+    color: #4A90E2 !important;
+}
+
+.projects-section .feature-tag {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+.projects-section .showcase-icon {
+    color: #FFFFFF !important;
+    opacity: 0.9 !important;
+}
+
+/* ============================================
+   STATS SECTION - Sichtbarkeit
+   ============================================ */
+
+.stats-section.theme-dark h5,
+.stats-section.theme-dark p {
+    color: #FFFFFF !important;
+}
+
+.stats-section .stat-label {
+    color: #FFFFFF !important;
+}
+
+.stats-section .stat-description {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+.stats-section .stat-number {
+    color: #4A90E2 !important;
+    background: linear-gradient(135deg, #4A90E2, #5BA0F2) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    background-clip: text !important;
+}
+
+/* ============================================
+   CODE SHOWCASE - Sichtbarkeit
+   ============================================ */
+
+.code-showcase-section .code-filename {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.code-showcase-section .code-principles h6 {
+    color: #FFFFFF;
+}
+
+.code-showcase-section .principles-list li {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.code-showcase-section .principles-list strong {
+    color: #FFFFFF;
+}
+
+.code-showcase-section .code-badge {
+    color: rgba(255, 255, 255, 0.9);
+}
+
+/* ============================================
+   PRAKTIKUM SECTION - Sichtbarkeit
+   ============================================ */
+
+.praktikum-section.theme-dark h3,
+.praktikum-section.theme-dark h5,
+.praktikum-section.theme-dark p {
+    color: #FFFFFF !important;
+}
+
+.praktikum-section .info-box {
+    background: rgba(255, 255, 255, 0.08) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.4) !important;
+}
+
+.praktikum-section .info-box p,
+.praktikum-section .info-box li {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.praktikum-section .info-box strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.praktikum-section .text-wrap p {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.praktikum-section .text-wrap strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* ============================================
+   SELECTION - Bessere Sichtbarkeit
+   ============================================ */
+
+::selection {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+}
+
+::-moz-selection {
+    background-color: #4A90E2;
+    color: #FFFFFF;
+}

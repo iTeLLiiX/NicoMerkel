@@ -1,0 +1,277 @@
+/**
+ * UMFASSENDE SICHTBARKEITS-FIXES
+ * Behebt alle Kontrastprobleme - besonders bei blauen Markierungen
+ */
+
+/* ============================================
+   ALLGEMEINE TEXT-SICHTBARKEIT
+   ============================================ */
+
+/* Alle Texte in theme-dark Sektionen - FORCE WEISS */
+.section.theme-dark,
+.section.theme-dark * {
+    color: #FFFFFF !important;
+}
+
+/* Überschreibe nur spezifische Elemente, die anders sein sollen */
+.section.theme-dark a {
+    color: #61DAFB !important; /* Helles Cyan für Links auf dunklem Hintergrund */
+}
+
+.section.theme-dark a:hover {
+    color: #7AE5FF !important;
+    text-decoration: underline !important;
+}
+
+/* ============================================
+   STATS SECTION - STAT NUMBER FIX
+   ============================================ */
+
+/* Stat Number - Sichtbarer weißer Text statt transparentem Gradient */
+.stats-section .stat-number {
+    color: #FFFFFF !important;
+    background: none !important;
+    -webkit-background-clip: unset !important;
+    -webkit-text-fill-color: #FFFFFF !important;
+    background-clip: unset !important;
+    text-shadow: 0 0 20px rgba(97, 218, 251, 0.5) !important;
+    font-weight: 700 !important;
+}
+
+/* Stat Label und Description - FORCE WEISS */
+.stats-section .stat-label {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.stats-section .stat-description {
+    color: rgba(255, 255, 255, 0.95) !important;
+    opacity: 1 !important;
+}
+
+/* ============================================
+   PROJEKTE SECTION - ALLE TEXTE SICHTBAR
+   ============================================ */
+
+.projects-section.theme-dark * {
+    color: #FFFFFF !important;
+}
+
+.projects-section .showcase-card h6 {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.projects-section .showcase-card p {
+    color: rgba(255, 255, 255, 0.98) !important;
+    opacity: 1 !important;
+}
+
+.projects-section .showcase-card a {
+    color: #61DAFB !important;
+    text-decoration: underline !important;
+}
+
+.projects-section .showcase-card a:hover {
+    color: #7AE5FF !important;
+}
+
+.projects-section .feature-tag {
+    color: #FFFFFF !important;
+    background: rgba(255, 255, 255, 0.2) !important;
+    border: 1px solid rgba(255, 255, 255, 0.4) !important;
+    font-weight: 500 !important;
+}
+
+.projects-section .showcase-icon {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+.projects-section .showcase-icon svg {
+    stroke: #FFFFFF !important;
+    fill: none !important;
+}
+
+/* ============================================
+   CODE SHOWCASE SECTION - ALLE TEXTE SICHTBAR
+   ============================================ */
+
+.code-showcase-section.theme-dark * {
+    color: #FFFFFF !important;
+}
+
+.code-showcase-section .code-filename {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.code-showcase-section .code-content code {
+    color: #E6E6E6 !important;
+}
+
+.code-showcase-section .code-keyword { 
+    color: #C792EA !important; 
+}
+
+.code-showcase-section .code-string { 
+    color: #C3E88D !important; 
+}
+
+.code-showcase-section .code-function { 
+    color: #82AAFF !important; 
+}
+
+.code-showcase-section .code-number { 
+    color: #F78C6C !important; 
+}
+
+.code-showcase-section .code-tag { 
+    color: #F07178 !important; 
+}
+
+.code-showcase-section .code-attr { 
+    color: #FFCB6B !important; 
+}
+
+.code-showcase-section .code-principles h6 {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.code-showcase-section .principles-list li {
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+.code-showcase-section .principles-list strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.code-showcase-section .code-badge {
+    color: rgba(255, 255, 255, 0.95) !important;
+    background: rgba(255, 255, 255, 0.15) !important;
+    border: 1px solid rgba(255, 255, 255, 0.3) !important;
+}
+
+/* ============================================
+   PRAKTIKUM SECTION - ALLE TEXTE SICHTBAR
+   ============================================ */
+
+.praktikum-section.theme-dark * {
+    color: #FFFFFF !important;
+}
+
+.praktikum-section h3 {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.praktikum-section .text-wrap p {
+    color: rgba(255, 255, 255, 0.98) !important;
+    opacity: 1 !important;
+}
+
+.praktikum-section .text-wrap strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+.praktikum-section .info-box {
+    background: rgba(255, 255, 255, 0.1) !important;
+    border-left: 3px solid rgba(255, 255, 255, 0.5) !important;
+}
+
+.praktikum-section .info-box p,
+.praktikum-section .info-box li {
+    color: rgba(255, 255, 255, 0.98) !important;
+    opacity: 1 !important;
+}
+
+.praktikum-section .info-box strong {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+}
+
+/* ============================================
+   GRID SUB TITLE - ALLE TEXTE SICHTBAR
+   ============================================ */
+
+.section.theme-dark .grid-sub-title h5 {
+    color: #FFFFFF !important;
+    font-weight: 600 !important;
+    opacity: 1 !important;
+}
+
+.section.theme-dark .grid-sub-title p {
+    color: rgba(255, 255, 255, 0.95) !important;
+    opacity: 1 !important;
+}
+
+.section.theme-dark .flex-col h5 {
+    color: #FFFFFF !important;
+    opacity: 1 !important;
+}
+
+.section.theme-dark .flex-col p {
+    color: rgba(255, 255, 255, 0.95) !important;
+    opacity: 1 !important;
+}
+
+/* ============================================
+   BUTTONS & LINKS - SICHTBAR
+   ============================================ */
+
+.theme-dark .btn-text-inner {
+    color: #FFFFFF !important;
+}
+
+.theme-dark .btn-link {
+    color: #FFFFFF !important;
+}
+
+.theme-dark .btn-link.active {
+    color: #61DAFB !important;
+}
+
+/* ============================================
+   OVERRIDE ALLE OPACITY PROBLEME
+   ============================================ */
+
+.section.theme-dark *[style*="opacity"] {
+    opacity: 1 !important;
+}
+
+.section.theme-dark p[style*="opacity"] {
+    opacity: 1 !important;
+    color: rgba(255, 255, 255, 0.95) !important;
+}
+
+/* ============================================
+   BLUE HIGHLIGHTED AREAS - SICHTBAR
+   ============================================ */
+
+/* Wenn etwas blau markiert ist, muss der Text weiß sein */
+[style*="background"][style*="blue"],
+[style*="background-color"][style*="blue"],
+.blue-highlight,
+.blue-bg {
+    color: #FFFFFF !important;
+}
+
+/* ============================================
+   RESPONSIVE FIXES
+   ============================================ */
+
+@media (max-width: 768px) {
+    .section.theme-dark * {
+        color: #FFFFFF !important;
+    }
+    
+    .stats-section .stat-number {
+        font-size: 3rem !important;
+        color: #FFFFFF !important;
+    }
+}
+
+
+
