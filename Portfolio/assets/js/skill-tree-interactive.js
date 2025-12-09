@@ -23,10 +23,10 @@ class InteractiveSkillTree {
             // Daten laden
             const response = await fetch('data/skills-data.json');
             if (!response.ok) throw new Error('Skills-Daten konnten nicht geladen werden');
-            
+
             this.skillsData = await response.json();
             this.container = document.getElementById('skills-container');
-            
+
             if (!this.container) {
                 console.error('Skills-Container nicht gefunden');
                 return;
@@ -34,20 +34,18 @@ class InteractiveSkillTree {
 
             // UI erstellen
             this.createUI();
-            
+
             // Canvas initialisieren
             this.initCanvas();
-            
+
             // Skills laden und rendern
             await this.loadSkills();
             this.arrangeSkills();
-            
+            this.draw(); // initial statisches Rendern
+
             // Event-Listener
             this.attachEventListeners();
-            
-            // Animation starten
-            this.animate();
-            
+
         } catch (error) {
             console.error('Fehler beim Initialisieren:', error);
             this.showFallback();
@@ -57,7 +55,7 @@ class InteractiveSkillTree {
     createUI() {
         this.container.innerHTML = '';
         this.container.className = 'skill-tree-container';
-        
+
         // Header mit Play Mode Switch
         const header = document.createElement('div');
         header.className = 'skill-tree-header';
@@ -74,7 +72,7 @@ class InteractiveSkillTree {
             </p>
         `;
         this.container.appendChild(header);
-        
+
         // Canvas Container
         const canvasContainer = document.createElement('div');
         canvasContainer.className = 'canvas-container';
@@ -86,37 +84,37 @@ class InteractiveSkillTree {
 
     initCanvas() {
         if (!this.canvas) return;
-        
+
         const container = this.canvas.parentElement;
-        
+
         const resizeCanvas = () => {
             const rect = container.getBoundingClientRect();
             const width = rect.width;
             const height = Math.min(width * 1.2, 900);
-            
+
             this.canvas.width = width * this.dpr;
             this.canvas.height = height * this.dpr;
             this.canvas.style.width = width + 'px';
             this.canvas.style.height = height + 'px';
-            
+
             this.ctx = this.canvas.getContext('2d');
             if (this.ctx) {
                 this.ctx.scale(this.dpr, this.dpr);
             }
-            
+
             // Skills neu anordnen wenn Canvas-Größe sich ändert
             if (this.skillItems.length > 0) {
                 this.arrangeSkills();
             }
         };
-        
+
         resizeCanvas();
         window.addEventListener('resize', resizeCanvas);
     }
 
     async loadSkills() {
         this.skillItems = [];
-        
+
         for (const skill of this.skillsData.skills) {
             const item = {
                 skill: skill,
@@ -134,10 +132,10 @@ class InteractiveSkillTree {
                 isHovered: false,
                 velocity: { x: 0, y: 0 }
             };
-            
+
             // Icon laden
             await this.loadSkillIcon(item);
-            
+
             this.skillItems.push(item);
         }
     }
@@ -146,36 +144,36 @@ class InteractiveSkillTree {
         return new Promise((resolve) => {
             const img = new Image();
             img.crossOrigin = 'anonymous';
-            
+
             img.onload = () => {
                 item.icon = img;
                 item.iconLoaded = true;
                 resolve();
             };
-            
+
             img.onerror = () => {
                 item.iconLoaded = true;
                 item.icon = null;
                 resolve();
             };
-            
+
             img.src = item.skill.icon || 'assets/icons/default.svg';
         });
     }
 
     arrangeSkills() {
         if (!this.canvas || !this.ctx) return;
-        
+
         const width = this.canvas.width / this.dpr;
         const height = this.canvas.height / this.dpr;
         const padding = 80;
         const minDistance = 90;
-        
+
         // Organische Anordnung - verstreute Positionen
         this.skillItems.forEach((item, index) => {
             let attempts = 0;
             let validPosition = false;
-            
+
             while (!validPosition && attempts < 150) {
                 // Zufällige Position mit Tendenz zur Mitte
                 const angle = (index / this.skillItems.length) * Math.PI * 2;
@@ -183,10 +181,10 @@ class InteractiveSkillTree {
                 const radius = radiusVariation * Math.min(width, height) / 2.5;
                 const centerX = width / 2;
                 const centerY = height / 2;
-                
+
                 item.x = centerX + Math.cos(angle) * radius + (Math.random() - 0.5) * 120;
                 item.y = centerY + Math.sin(angle) * radius + (Math.random() - 0.5) * 120;
-                
+
                 // Prüfe Kollisionen
                 validPosition = true;
                 for (let i = 0; i < index; i++) {
@@ -199,16 +197,16 @@ class InteractiveSkillTree {
                         break;
                     }
                 }
-                
+
                 // Prüfe Grenzen
                 if (item.x < padding || item.x > width - padding ||
                     item.y < padding || item.y > height - padding) {
                     validPosition = false;
                 }
-                
+
                 attempts++;
             }
-            
+
             // Setze Größe
             item.size = item.baseSize;
         });
@@ -222,7 +220,7 @@ class InteractiveSkillTree {
                 this.togglePlayMode(e.target.checked);
             });
         }
-        
+
         // Canvas Mouse Events
         if (this.canvas) {
             this.canvas.addEventListener('mousemove', (e) => this.handleMouseMove(e));
@@ -234,9 +232,10 @@ class InteractiveSkillTree {
     togglePlayMode(enabled) {
         this.playMode = enabled;
         const hint = document.getElementById('play-mode-hint');
-        
+
         if (enabled) {
             hint.style.display = 'block';
+            this.startAnimation();
         } else {
             hint.style.display = 'none';
             // Reset all colors
@@ -245,6 +244,8 @@ class InteractiveSkillTree {
                 item.isHovered = false;
                 item.hoverScale = 1;
             });
+            this.stopAnimation();
+            this.draw();
         }
     }
 
@@ -252,36 +253,36 @@ class InteractiveSkillTree {
         const rect = this.canvas.getBoundingClientRect();
         this.mousePos.x = (e.clientX - rect.left) * (this.canvas.width / this.dpr / rect.width);
         this.mousePos.y = (e.clientY - rect.top) * (this.canvas.height / this.dpr / rect.height);
-        
+
         // Finde nächstes Skill-Item
         let closestItem = null;
         let minDistance = Infinity;
-        
+
         this.skillItems.forEach(item => {
             const distance = Math.sqrt(
-                Math.pow(this.mousePos.x - item.x, 2) + 
+                Math.pow(this.mousePos.x - item.x, 2) +
                 Math.pow(this.mousePos.y - item.y, 2)
             );
-            
+
             const hoverRadius = item.size * 1.5;
             if (distance < hoverRadius && distance < minDistance) {
                 minDistance = distance;
                 closestItem = item;
             }
         });
-        
+
         // Hover-Effekt
         if (closestItem !== this.hoveredSkill) {
             if (this.hoveredSkill) {
                 this.hoveredSkill.isHovered = false;
                 this.hoveredSkill.hoverScale = 1;
             }
-            
+
             this.hoveredSkill = closestItem;
-            
+
             if (closestItem) {
                 closestItem.isHovered = true;
-                
+
                 if (this.playMode) {
                     // Zufällige Farbe für Play Mode
                     const colors = [
@@ -292,7 +293,7 @@ class InteractiveSkillTree {
                     ];
                     closestItem.color = colors[Math.floor(Math.random() * colors.length)];
                     closestItem.hoverScale = 1.4;
-                    
+
                     // Nachbar-Items auch animieren
                     this.animateNeighbors(closestItem);
                 } else {
@@ -300,17 +301,22 @@ class InteractiveSkillTree {
                 }
             }
         }
+
+        // Immer neu zeichnen bei Hover-Updates
+        if (!this.playMode) {
+            this.draw();
+        }
     }
 
     animateNeighbors(centerItem) {
         this.skillItems.forEach(item => {
             if (item === centerItem) return;
-            
+
             const distance = Math.sqrt(
-                Math.pow(item.x - centerItem.x, 2) + 
+                Math.pow(item.x - centerItem.x, 2) +
                 Math.pow(item.y - centerItem.y, 2)
             );
-            
+
             if (distance < 180) {
                 const intensity = 1 - (distance / 180);
                 const colors = [
@@ -319,7 +325,7 @@ class InteractiveSkillTree {
                 ];
                 item.color = colors[Math.floor(Math.random() * colors.length)];
                 item.hoverScale = 1 + intensity * 0.15;
-                
+
                 // Nach kurzer Zeit zurücksetzen
                 setTimeout(() => {
                     if (!item.isHovered) {
@@ -337,7 +343,7 @@ class InteractiveSkillTree {
             this.hoveredSkill.hoverScale = 1;
             this.hoveredSkill = null;
         }
-        
+
         this.skillItems.forEach(item => {
             item.isHovered = false;
             if (!this.playMode) {
@@ -356,17 +362,17 @@ class InteractiveSkillTree {
 
     draw() {
         if (!this.ctx || !this.canvas) return;
-        
+
         const width = this.canvas.width / this.dpr;
         const height = this.canvas.height / this.dpr;
-        
+
         // Weißer Hintergrund
         this.ctx.fillStyle = '#ffffff';
         this.ctx.fillRect(0, 0, width, height);
-        
+
         // Subtile Hintergrund-Punkte
         this.drawBackgroundDots();
-        
+
         // Skills zeichnen
         this.skillItems.forEach(item => {
             this.drawSkillItem(item);
@@ -376,7 +382,7 @@ class InteractiveSkillTree {
     drawBackgroundDots() {
         const width = this.canvas.width / this.dpr;
         const height = this.canvas.height / this.dpr;
-        
+
         // Kleine dunkle Punkte (wie in der Referenz)
         this.ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
         for (let i = 0; i < 200; i++) {
@@ -391,15 +397,15 @@ class InteractiveSkillTree {
 
     drawSkillItem(item) {
         if (!item.iconLoaded) return;
-        
+
         const size = item.size * item.hoverScale;
         const x = item.x;
         const y = item.y;
-        
+
         this.ctx.save();
         this.ctx.translate(x, y);
         this.ctx.rotate((item.rotation * Math.PI) / 180);
-        
+
         // Farbfilter für Play Mode
         if (this.playMode && item.color) {
             this.ctx.globalCompositeOperation = 'source-over';
@@ -408,11 +414,11 @@ class InteractiveSkillTree {
             this.ctx.fillRect(-size / 2 - 8, -size / 2 - 8, size + 16, size + 16);
             this.ctx.globalAlpha = 1;
         }
-        
+
         // Icon zeichnen (in Graustufen)
         if (item.icon) {
             this.ctx.globalAlpha = item.isHovered ? 1 : item.opacity;
-            
+
             // Icon zeichnen
             this.ctx.drawImage(
                 item.icon,
@@ -421,20 +427,20 @@ class InteractiveSkillTree {
                 size,
                 size
             );
-            
+
             // Graustufen-Filter anwenden (nur wenn nicht im Play Mode mit Farbe)
             if (!this.playMode || !item.color) {
                 try {
                     const imageData = this.ctx.getImageData(-size / 2, -size / 2, size, size);
                     const data = imageData.data;
-                    
+
                     for (let i = 0; i < data.length; i += 4) {
                         const gray = data[i] * 0.299 + data[i + 1] * 0.587 + data[i + 2] * 0.114;
                         data[i] = gray;     // R
                         data[i + 1] = gray; // G
                         data[i + 2] = gray; // B
                     }
-                    
+
                     this.ctx.putImageData(imageData, -size / 2, -size / 2);
                 } catch (e) {
                     // Ignore CORS errors
@@ -449,31 +455,49 @@ class InteractiveSkillTree {
             this.ctx.textBaseline = 'middle';
             this.ctx.fillText(item.skill.name.charAt(0), 0, 0);
         }
-        
+
         // Hover-Glow
         if (item.isHovered) {
             this.ctx.shadowBlur = 25;
             this.ctx.shadowColor = item.color || 'rgba(74, 144, 226, 0.6)';
         }
-        
+
         this.ctx.restore();
     }
 
     animate() {
+        if (!this.playMode) {
+            this.animationFrame = null;
+            return;
+        }
+
         // Smooth Animation für Hover-Scale
         this.skillItems.forEach(item => {
             const targetScale = item.isHovered ? item.hoverScale : 1;
             item.size += (item.baseSize * targetScale - item.size) * 0.15;
-            
+
             // Rotation Animation
             if (item.isHovered) {
                 item.targetRotation += 3;
             }
             item.rotation += (item.targetRotation - item.rotation) * 0.15;
         });
-        
+
         this.draw();
         this.animationFrame = requestAnimationFrame(() => this.animate());
+    }
+
+    startAnimation() {
+        if (!this.animationFrame) {
+            this.animationFrame = requestAnimationFrame(() => this.animate());
+        }
+    }
+
+    stopAnimation() {
+        if (this.animationFrame) {
+            cancelAnimationFrame(this.animationFrame);
+            this.animationFrame = null;
+        }
     }
 
     showFallback() {

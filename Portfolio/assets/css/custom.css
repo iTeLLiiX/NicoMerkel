@@ -1,11 +1,4 @@
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="css/text-visibility-fix.css">
-    <!-- Danach die anderen CSS-Dateien -->
-    <link rel="stylesheet" href="css/normalize.css">
-    <link rel="stylesheet" href="css/styleguide.css">
-    <!-- usw. -->
-</head>
+<head><meta charset="UTF-8"><link rel="stylesheet" href="css/text-visibility-fix.css">< !-- Danach die anderen CSS-Dateien --><link rel="stylesheet" href="css/normalize.css"><link rel="stylesheet" href="css/styleguide.css">< !-- usw. --></head>
 /* ============================================
    CUSTOM STYLES - NICO MERKEL PORTFOLIO
    Bereinigt & Optimiert für Webentwickler-Niveau
@@ -35,7 +28,7 @@
 .badge-icon:hover {
    transform: rotate(5deg) scale(1.15);
    border-color: rgba(255, 255, 255, 0.4);
-   box-shadow: 
+   box-shadow:
       0 0 20px rgba(255, 255, 255, 0.2),
       0 0 40px rgba(255, 255, 255, 0.1);
 }
@@ -138,6 +131,126 @@
    background: #ffffff;
 }
 
+.skills-section .skills-title {
+   font-size: clamp(2rem, 3.2vw, 2.6rem);
+   margin-bottom: 0.3rem;
+}
+
+.skills-section .skills-subtitle {
+   opacity: 0.72;
+}
+
+/* Home Intro Highlights */
+.intro-highlights {
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+   gap: 0.75rem;
+   margin: 1.5rem 0 0;
+}
+
+.intro-pill {
+   background: rgba(15, 17, 21, 0.06);
+   border: 1px solid rgba(15, 17, 21, 0.08);
+   border-radius: 12px;
+   padding: 0.9rem 1rem;
+   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.06);
+}
+
+.intro-pill .pill-label {
+   display: block;
+   font-size: 0.8rem;
+   letter-spacing: 0.04em;
+   text-transform: uppercase;
+   opacity: 0.65;
+   margin-bottom: 0.25rem;
+}
+
+.intro-pill strong {
+   font-size: 0.95rem;
+}
+
+/* Skills Container Upgrade */
+#skills-container {
+   position: relative;
+   margin-top: 2.5rem;
+   padding: clamp(2.25rem, 4vw, 3rem);
+   border-radius: 20px;
+   background: rgba(15, 17, 21, 0.82);
+   box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+   border: 1px solid rgba(255, 255, 255, 0.08);
+   backdrop-filter: blur(12px);
+   overflow: hidden;
+}
+
+.skills-section.theme-dark #skills-container {
+   background: rgba(15, 17, 21, 0.85);
+}
+
+.skills-section:not(.theme-dark) #skills-container {
+   background: rgba(255, 255, 255, 0.78);
+   border: 1px solid rgba(0, 0, 0, 0.06);
+   box-shadow: 0 18px 45px rgba(0, 0, 0, 0.08);
+}
+
+#skills-container::before,
+#skills-container::after {
+   content: "";
+   position: absolute;
+   width: 360px;
+   height: 360px;
+   border-radius: 50%;
+   background: radial-gradient(circle, rgba(97, 218, 251, 0.22) 0%, rgba(97, 218, 251, 0) 60%);
+   filter: blur(30px);
+   opacity: 0.7;
+   pointer-events: none;
+}
+
+#skills-container::before {
+   top: -140px;
+   left: -140px;
+}
+
+#skills-container::after {
+   bottom: -180px;
+   right: -120px;
+}
+
+#skills-container .skills-loading {
+   position: relative;
+   z-index: 2;
+}
+
+#skills-container .loading-spinner {
+   border: 3px solid rgba(255, 255, 255, 0.15);
+   border-top: 3px solid #61DAFB;
+}
+
+.skills-fallback {
+   position: relative;
+   z-index: 2;
+   display: grid;
+   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+   gap: 0.65rem;
+   margin-top: 1.5rem;
+}
+
+.skill-chip {
+   padding: 0.65rem 0.75rem;
+   border-radius: 10px;
+   background: rgba(255, 255, 255, 0.08);
+   border: 1px solid rgba(255, 255, 255, 0.12);
+   text-align: center;
+   font-size: 0.9rem;
+   color: #fff;
+   box-shadow: 0 6px 20px rgba(0, 0, 0, 0.16);
+}
+
+.skills-section:not(.theme-dark) .skill-chip {
+   background: rgba(15, 17, 21, 0.05);
+   border: 1px solid rgba(15, 17, 21, 0.08);
+   color: #111;
+}
+
 .skills-grid {
    display: grid;
    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -162,7 +275,7 @@
    inset: -2px;
    border-radius: inherit;
    padding: 2px;
-   background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+   background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
    background-size: 200% 200%;
    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
    -webkit-mask-composite: xor;
@@ -178,8 +291,15 @@
 }
 
 @keyframes gradientShift {
-   0%, 100% { background-position: 0% 50%; }
-   50% { background-position: 100% 50%; }
+
+   0%,
+   100% {
+      background-position: 0% 50%;
+   }
+
+   50% {
+      background-position: 100% 50%;
+   }
 }
 
 .skill-category:hover {
@@ -206,7 +326,7 @@
    left: 0;
    width: 0;
    height: 2px;
-   background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.3));
+   background: linear-gradient(90deg, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.3));
    transition: width 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
@@ -234,18 +354,36 @@
    animation: fadeInUp 0.6s ease-out backwards;
 }
 
-.skill-item:nth-child(1) { animation-delay: 0.1s; }
-.skill-item:nth-child(2) { animation-delay: 0.2s; }
-.skill-item:nth-child(3) { animation-delay: 0.3s; }
-.skill-item:nth-child(4) { animation-delay: 0.4s; }
-.skill-item:nth-child(5) { animation-delay: 0.5s; }
-.skill-item:nth-child(6) { animation-delay: 0.6s; }
+.skill-item:nth-child(1) {
+   animation-delay: 0.1s;
+}
+
+.skill-item:nth-child(2) {
+   animation-delay: 0.2s;
+}
+
+.skill-item:nth-child(3) {
+   animation-delay: 0.3s;
+}
+
+.skill-item:nth-child(4) {
+   animation-delay: 0.4s;
+}
+
+.skill-item:nth-child(5) {
+   animation-delay: 0.5s;
+}
+
+.skill-item:nth-child(6) {
+   animation-delay: 0.6s;
+}
 
 @keyframes fadeInUp {
    from {
       opacity: 0;
       transform: translateY(20px);
    }
+
    to {
       opacity: 1;
       transform: translateY(0);
@@ -258,7 +396,7 @@
    bottom: 0;
    left: 0;
    height: 2px;
-   background: linear-gradient(90deg, rgba(255,255,255,0.6), rgba(255,255,255,0.2));
+   background: linear-gradient(90deg, rgba(255, 255, 255, 0.6), rgba(255, 255, 255, 0.2));
    width: 0;
    transition: width 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
    border-radius: 0 0 8px 8px;
@@ -297,7 +435,7 @@
 .skill-item:hover .skill-icon {
    transform: scale(1.3) rotate(8deg);
    opacity: 1;
-   filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255,255,255,0.6));
+   filter: brightness(0) invert(1) drop-shadow(0 0 12px rgba(255, 255, 255, 0.6));
 }
 
 .skill-level {
@@ -364,7 +502,7 @@
    inset: -2px;
    border-radius: inherit;
    padding: 2px;
-   background: linear-gradient(135deg, rgba(255,255,255,0.3), rgba(255,255,255,0.1), rgba(255,255,255,0.3));
+   background: linear-gradient(135deg, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.3));
    background-size: 200% 200%;
    -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
    -webkit-mask-composite: xor;
@@ -445,7 +583,7 @@
 .showcase-card:hover .showcase-icon {
    transform: scale(1.2) rotate(5deg);
    opacity: 1;
-   filter: drop-shadow(0 0 20px rgba(255,255,255,0.5));
+   filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
 }
 
 .showcase-card h6 {
@@ -588,9 +726,17 @@
    background: rgba(255, 255, 255, 0.3);
 }
 
-.code-dots span:nth-child(1) { background: #ff5f56; }
-.code-dots span:nth-child(2) { background: #ffbd2e; }
-.code-dots span:nth-child(3) { background: #27c93f; }
+.code-dots span:nth-child(1) {
+   background: #ff5f56;
+}
+
+.code-dots span:nth-child(2) {
+   background: #ffbd2e;
+}
+
+.code-dots span:nth-child(3) {
+   background: #27c93f;
+}
 
 .code-filename {
    font-size: 0.9rem;
@@ -615,12 +761,29 @@
    color: #e6e6e6;
 }
 
-.code-keyword { color: #c792ea; }
-.code-string { color: #c3e88d; }
-.code-function { color: #82aaff; }
-.code-number { color: #f78c6c; }
-.code-tag { color: #f07178; }
-.code-attr { color: #ffcb6b; }
+.code-keyword {
+   color: #c792ea;
+}
+
+.code-string {
+   color: #c3e88d;
+}
+
+.code-function {
+   color: #82aaff;
+}
+
+.code-number {
+   color: #f78c6c;
+}
+
+.code-tag {
+   color: #f07178;
+}
+
+.code-attr {
+   color: #ffcb6b;
+}
 
 .code-footer {
    padding: 1rem 1.5rem;
@@ -702,6 +865,7 @@ button:focus {
 }
 
 @media (prefers-reduced-motion: reduce) {
+
    *,
    *::before,
    *::after {
@@ -713,41 +877,42 @@ button:focus {
 
 /* Responsive */
 @media (max-width: 768px) {
+
    .skills-grid,
    .certifications-grid,
    .showcase-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
    }
-   
+
    .badges-row {
       grid-template-columns: 1fr;
    }
-   
+
    .skill-category,
    .certification-category {
       padding: 1.5rem;
    }
-   
+
    .stats-grid {
       grid-template-columns: repeat(2, 1fr);
       gap: 1.5rem;
    }
-   
+
    .code-showcase-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
    }
-   
+
    .stat-number {
       font-size: 3rem;
    }
-   
+
    .praktikum-section h3,
    .shop-section h3 {
       font-size: 1.8rem;
    }
-   
+
    .profile-picture {
       width: 50px;
       height: 50px;
@@ -784,7 +949,7 @@ button:focus {
 .project-card:hover {
    transform: translateY(-10px) scale(1.02);
    border-color: rgba(97, 218, 251, 0.5);
-   box-shadow: 
+   box-shadow:
       0 20px 60px rgba(0, 0, 0, 0.4),
       0 0 80px rgba(97, 218, 251, 0.3);
 }
@@ -919,7 +1084,7 @@ button:focus {
 .shop-item:hover {
    transform: translateY(-15px) scale(1.03);
    border-color: rgba(97, 218, 251, 0.5);
-   box-shadow: 
+   box-shadow:
       0 25px 70px rgba(0, 0, 0, 0.4),
       0 0 100px rgba(97, 218, 251, 0.3);
 }
@@ -931,7 +1096,7 @@ button:focus {
 
 .shop-item-featured:hover {
    border-color: rgba(255, 193, 7, 0.7);
-   box-shadow: 
+   box-shadow:
       0 25px 70px rgba(0, 0, 0, 0.4),
       0 0 100px rgba(255, 193, 7, 0.4);
 }
@@ -1084,16 +1249,17 @@ button:focus {
 }
 
 @media (max-width: 768px) {
+
    .projects-grid,
    .shop-grid {
       grid-template-columns: 1fr;
       gap: 2rem;
    }
-   
+
    .project-image {
       height: 200px;
    }
-   
+
    .shop-item {
       padding: 2rem 1.5rem;
    }

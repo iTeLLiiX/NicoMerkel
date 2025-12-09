@@ -323,8 +323,12 @@
             </div>
             <div class="row once-in">
                 <div class="flex-col">
-                    <form class="form" method="post" action="mailto:nico.merkel@online.de" enctype="multipart/form-data"
+                    <form class="form" method="post" data-netlify="true" name="contact" netlify-honeypot="bot-field"
                         novalidate>
+                        <input type="hidden" name="form-name" value="contact">
+                        <div style="display:none;">
+                            <label>Don’t fill this out: <input name="bot-field" /></label>
+                        </div>
                         <div class="website-field">
                             <label class="label" for="tel">Phone Number</label>
                             <input class="field" type="text" id="form-tel" name="tel" tabindex="-1">

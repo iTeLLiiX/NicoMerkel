@@ -10,12 +10,6 @@
   # Node version (if needed for any build tools)
   NODE_VERSION = "18"
 
-# Redirect rules for SPA routing (if using client-side routing)
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
-
 # Headers for security and performance
 [[headers]]
   for = "/*"
